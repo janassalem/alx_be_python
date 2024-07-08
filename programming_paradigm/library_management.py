@@ -5,14 +5,14 @@ class Book:
         self._is_checked_out = False
 
     def check_out(self):
-        """Mark the book as checked out."""
+        "Mark the book as checked out."
         if not self._is_checked_out:
             self._is_checked_out = True
             return True
         return False
 
     def return_book(self):
-        """Mark the book as returned."""
+        "Mark the book as returned."
         if self._is_checked_out:
             self._is_checked_out = False
             return True
