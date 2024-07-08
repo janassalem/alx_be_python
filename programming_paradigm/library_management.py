@@ -52,6 +52,7 @@ class Library:
                 print(f"{book.title} by {book.author}")
 
 
+# Below code should be in the main.py file, for clarity purposes it is shown here
 if __name__ == "__main__":
     # Example usage
     library = Library()
