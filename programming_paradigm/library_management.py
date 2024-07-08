@@ -5,18 +5,20 @@ class Book:
         self._is_checked_out = False
 
     def check_out(self):
-        """Mark the book as checked out."""
+        """Check out the book."""
         if not self._is_checked_out:
             self._is_checked_out = True
             return True
-        return False
+        else:
+            return False
 
     def return_book(self):
-        """Mark the book as returned."""
+        """Return the book."""
         if self._is_checked_out:
             self._is_checked_out = False
             return True
-        return False
+        else:
+            return False
 
     def is_available(self):
         """Check if the book is available."""
@@ -47,27 +49,46 @@ class Library:
 
     def list_available_books(self):
         """List all available books in the library."""
-        for book in self._books:
-            if book.is_available():
+        available_books = [book for book in self._books if book.is_available()]
+        if available_books:
+            for book in available_books:
                 print(f"{book.title} by {book.author}")
+        else:
+            print("No books available.")
 
 
-# Ensure this script is being run directly for testing
+# Main script for testing the library management system
 if __name__ == "__main__":
-    # Testing code here
     def main():
         library = Library()
+
+        # Adding books to the library
         library.add_book(Book("Brave New World", "Aldous Huxley"))
         library.add_book(Book("1984", "George Orwell"))
 
+        # Display available books
         print("Available books after setup:")
         library.list_available_books()
 
-        library.check_out_book("1984")
+        # Check out a book
+        print("\nChecking out '1984'...")
+        if library.check_out_book("1984"):
+            print("'1984' checked out successfully.")
+        else:
+            print("Failed to check out '1984'.")
+
+        # Display available books after checking out
         print("\nAvailable books after checking out '1984':")
         library.list_available_books()
 
-        library.return_book("1984")
+        # Return a book
+        print("\nReturning '1984'...")
+        if library.return_book("1984"):
+            print("'1984' returned successfully.")
+        else:
+            print("Failed to return '1984'.")
+
+        # Display available books after returning
         print("\nAvailable books after returning '1984':")
         library.list_available_books()
 
