@@ -4,7 +4,7 @@ class Book:
         self.author = author
         self._is_checked_out = False
 
-    def CheckOut(self):
+    def check_out(self):
         """Marks the book as checked out."""
         if not self._is_checked_out:
             self._is_checked_out = True
@@ -51,28 +51,20 @@ class Library:
             if book.is_available():
                 print(f"{book.title} by {book.author}")
 
-
-# Below code should be in the main.py file, for clarity purposes it is shown here
+# Example usage:
 if __name__ == "__main__":
-    # Example usage
-    library = Library()
-    book1 = Book("Brave New World", "Aldous Huxley")
-    book2 = Book("1984", "George Orwell")
+    my_library = Library()
 
-    library.add_book(book1)
-    library.add_book(book2)
+    # Create some book instances
+    book1 = Book("The Great Gatsby", "F. Scott Fitzgerald")
+    book2 = Book("To Kill a Mockingbird", "Harper Lee")
 
-    print("Available books after setup:")
-    library.list_available_books()
+    # Add books to the library
+    my_library.add_book(book1)
+    my_library.add_book(book2)
 
-    print("\nChecking out '1984':")
-    library.check_out_book("1984")
+    # Check out a book
+    my_library.check_out_book("The Great Gatsby")
 
-    print("\nAvailable books after checking out '1984':")
-    library.list_available_books()
-
-    print("\nReturning '1984':")
-    library.return_book("1984")
-
-    print("\nAvailable books after returning '1984':")
-    library.list_available_books()
+    # List available books
+    my_library.list_available_books()
